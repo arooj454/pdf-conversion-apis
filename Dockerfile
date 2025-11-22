@@ -1,18 +1,18 @@
+# Use Python slim image
 FROM python:3.12-slim
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    libreoffice libreoffice-writer libreoffice-calc libreoffice-impress \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
+# Set working directory
 WORKDIR /app
 
-# Copy requirements and install
+# Copy requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your app code
+# Copy app code
 COPY . .
 
-# Use port 8080 for Koyeb
+# Expose port 8080
+EXPOSE 8080
+
+# Start FastAPI
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
