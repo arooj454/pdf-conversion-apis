@@ -4,5 +4,6 @@ PyPDF2
 pdf2docx
 docx2pdf
 pyzipper
-msoffcrypto
+msoffcrypto-tool
 python-multipart
+
